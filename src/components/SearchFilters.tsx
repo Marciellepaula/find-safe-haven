@@ -8,7 +8,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
-const SearchFilters = ({ onFiltersChange }) => {
+interface SearchFiltersProps {
+  onFiltersChange: (filters: any) => void;
+}
+
+const SearchFilters = ({ onFiltersChange }: SearchFiltersProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [filters, setFilters] = useState({
     location: '',
@@ -18,7 +22,7 @@ const SearchFilters = ({ onFiltersChange }) => {
     gender: ''
   });
 
-  const handleFilterChange = (key, value) => {
+  const handleFilterChange = (key: string, value: string) => {
     const newFilters = { ...filters, [key]: value };
     setFilters(newFilters);
     onFiltersChange(newFilters);

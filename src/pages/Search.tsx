@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Search as SearchIcon, Grid, List } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -16,7 +17,7 @@ const mockCases = [
     location: "São Paulo, SP",
     photo: "/placeholder.svg",
     description: "Última vez vista no centro da cidade usando blusa azul",
-    status: "recent"
+    status: "recent" as const
   },
   {
     id: 2,
@@ -26,7 +27,7 @@ const mockCases = [
     location: "Rio de Janeiro, RJ",
     photo: "/placeholder.svg",
     description: "Saiu para trabalhar e não retornou para casa",
-    status: "urgent"
+    status: "urgent" as const
   },
   {
     id: 3,
@@ -36,7 +37,7 @@ const mockCases = [
     location: "Belo Horizonte, MG", 
     photo: "/placeholder.svg",
     description: "Desapareceu após sair da escola no período da tarde",
-    status: "recent"
+    status: "recent" as const
   },
   {
     id: 4,
@@ -46,13 +47,13 @@ const mockCases = [
     location: "Porto Alegre, RS",
     photo: "/placeholder.svg",
     description: "Não retornou de uma caminhada no parque",
-    status: "urgent"
+    status: "urgent" as const
   }
 ];
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [viewMode, setViewMode] = useState('grid');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [filteredCases, setFilteredCases] = useState(mockCases);
 
   const handleSearch = () => {
@@ -64,7 +65,7 @@ const Search = () => {
     setFilteredCases(filtered);
   };
 
-  const handleFiltersChange = (filters) => {
+  const handleFiltersChange = (filters: any) => {
     let filtered = [...mockCases];
     
     if (filters.location) {
@@ -138,7 +139,7 @@ const Search = () => {
               </div>
               
               {/* View Toggle */}
-              <Tabs value={viewMode} onValueChange={setViewMode}>
+              <Tabs value={viewMode} onValueChange={(value) => setViewMode(value as 'grid' | 'list')}>
                 <TabsList>
                   <TabsTrigger value="grid">
                     <Grid className="h-4 w-4" />
