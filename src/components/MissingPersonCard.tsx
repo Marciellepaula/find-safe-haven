@@ -65,30 +65,29 @@ const MissingPersonCard = ({ person }: MissingPersonCardProps) => {
       </CardHeader>
       
       <CardContent className="space-y-4">
-        {/* Photo and Basic Info */}
-        <div className="flex items-center space-x-4">
-          <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
-            <img 
-              src={person.photo} 
-              alt={`Foto de ${person.name}`}
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-                target.nextElementSibling?.classList.remove('hidden');
-              }}
-            />
-            <User className="h-8 w-8 text-gray-400 hidden" />
-          </div>
-          
-          <div className="flex-1 min-w-0">
-            <h3 className="font-semibold text-lg text-gray-900 truncate">
-              {person.name}
-            </h3>
-            <p className="text-sm text-gray-600">
-              {person.age} anos
-            </p>
-          </div>
+        {/* Large Photo Section */}
+        <div className="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden">
+          <img 
+            src={person.photo} 
+            alt={`Foto de ${person.name}`}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+              target.nextElementSibling?.classList.remove('hidden');
+            }}
+          />
+          <User className="h-16 w-16 text-gray-400 hidden" />
+        </div>
+
+        {/* Basic Info */}
+        <div className="text-center">
+          <h3 className="font-semibold text-xl text-gray-900 mb-1">
+            {person.name}
+          </h3>
+          <p className="text-sm text-gray-600 mb-3">
+            {person.age} anos
+          </p>
         </div>
 
         {/* Details */}
