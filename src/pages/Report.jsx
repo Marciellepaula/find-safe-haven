@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Upload, AlertTriangle, Phone, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -29,11 +28,11 @@ const Report = () => {
     relationship: ''
   });
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     
     // Basic validation

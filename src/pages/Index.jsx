@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, MapPin, Calendar, Phone, Mail, Heart } from 'lucide-react';
@@ -19,7 +18,7 @@ const recentCases = [
     location: "São Paulo, SP",
     photo: "/placeholder.svg",
     description: "Última vez vista no centro da cidade",
-    status: "recent" as const
+    status: "recent"
   },
   {
     id: 2,
@@ -29,7 +28,7 @@ const recentCases = [
     location: "Rio de Janeiro, RJ",
     photo: "/placeholder.svg",
     description: "Saiu para trabalhar e não retornou",
-    status: "urgent" as const
+    status: "urgent"
   },
   {
     id: 3,
@@ -39,7 +38,7 @@ const recentCases = [
     location: "Belo Horizonte, MG",
     photo: "/placeholder.svg",
     description: "Desapareceu após sair da escola",
-    status: "recent" as const
+    status: "recent"
   }
 ];
 

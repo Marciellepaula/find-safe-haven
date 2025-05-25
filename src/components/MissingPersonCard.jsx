@@ -4,23 +4,8 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
-interface MissingPerson {
-  id: number;
-  name: string;
-  age: number;
-  lastSeen: string;
-  location: string;
-  photo: string;
-  description: string;
-  status: 'recent' | 'urgent' | 'found';
-}
-
-interface MissingPersonCardProps {
-  person: MissingPerson;
-}
-
-const MissingPersonCard = ({ person }: MissingPersonCardProps) => {
-  const getStatusColor = (status: string) => {
+const MissingPersonCard = ({ person }) => {
+  const getStatusColor = (status) => {
     switch (status) {
       case 'urgent':
         return 'bg-red-100 text-red-800 border-red-200';
@@ -33,7 +18,7 @@ const MissingPersonCard = ({ person }: MissingPersonCardProps) => {
     }
   };
 
-  const getStatusText = (status: string) => {
+  const getStatusText = (status) => {
     switch (status) {
       case 'urgent':
         return 'Urgente';
@@ -46,7 +31,7 @@ const MissingPersonCard = ({ person }: MissingPersonCardProps) => {
     }
   };
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('pt-BR');
   };
@@ -72,7 +57,7 @@ const MissingPersonCard = ({ person }: MissingPersonCardProps) => {
             alt={`Foto de ${person.name}`}
             className="w-full h-full object-cover"
             onError={(e) => {
-              const target = e.target as HTMLImageElement;
+              const target = e.target;
               target.style.display = 'none';
               target.nextElementSibling?.classList.remove('hidden');
             }}
